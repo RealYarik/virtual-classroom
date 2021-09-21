@@ -24,3 +24,8 @@ authenticateStudent() - a method that does the following:
 ## StudentController
 * getStudents - return List<StudentDto> ; getCurrentStudent - return StudentDto
 * sendHand - used for WebSocket to send hand information
+  
+  
+## Tests
+* StudentControllerTest
+* AuthControllerTest
