@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -58,7 +59,7 @@ public class AuthControllerTest {
     }
 
     @Test
-    public void givenStudentWithLoginOver50Chars_whenAuthenticateStudent_thenStatus400() throws Exception {
+    public void givenStudentWithLoginOver50Chars_whenAuthenticateStudent_thenError() throws Exception {
         Student student = createTestStudent("testtesttesttesttesttesttesttetestteststesttestttesttesttesttesttesttesttesttest");
 
         mockMvc.perform(
@@ -66,12 +67,12 @@ public class AuthControllerTest {
                         .content(objectMapper.writeValueAsString(studentFacade.studentToStudentDto(student)))
                         .contentType(MediaType.APPLICATION_JSON)
         )
-                .andExpect(status().isBadRequest());
+                .andExpect(content().string("{\"Size\":\"Login can be between 1 and 50 characters\"}"));
 
     }
 
     @Test
-    public void givenStudentWithEmptyLogin_whenAuthenticateStudent_thenStatus400() throws Exception {
+    public void givenStudentWithEmptyLogin_whenAuthenticateStudent_thenError() throws Exception {
         Student student = createTestStudent("");
 
         mockMvc.perform(
@@ -79,7 +80,7 @@ public class AuthControllerTest {
                         .content(objectMapper.writeValueAsString(studentFacade.studentToStudentDto(student)))
                         .contentType(MediaType.APPLICATION_JSON)
         )
-                .andExpect(status().isBadRequest());
+                .andExpect(content().string("{\"Size\":\"Login can be between 1 and 50 characters\",\"NotEmpty\":\"Login cannot be empty\"}"));
 
     }
 

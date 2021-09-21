@@ -27,7 +27,7 @@ public class ResponseErrorValidation {
             for (FieldError fieldError : result.getFieldErrors()) {
                 errorMap.put(fieldError.getCode(), fieldError.getDefaultMessage());
             }
-            return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(errorMap, HttpStatus.OK);
         }
         return null;
     }
