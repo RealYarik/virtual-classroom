@@ -1,0 +1,10 @@
+.margin {
+    position: absolute;
+    width: 500px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.border {
+    border: 1px solid black;
+}
