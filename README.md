@@ -1,6 +1,12 @@
 # Virtual Classroom
 This is an Application which presents classroom with students
 
+## How to Launch?
+* `cd virtual-classroom-frontend `
+* ` npm start`
+* `cd virtual-classroom-backend `
+* `mvn spring-boot:run`
+
 ## Technologies :
 * Backend: Java, Spring(Boot, Data, Security), WebSocket
 * Frontend: React, HTML, CSS, Bootstrap
